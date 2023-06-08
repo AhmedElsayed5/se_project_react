@@ -1,5 +1,5 @@
 // import logo from "..../src/logo.svg";
-import Header from "../Header/Header";
+import Header from "../Header/Header.js";
 import WeatherCard from "../WeatherCard/WeatherCard.js";
 import ItemCard from "../ItemCard/ItemCard";
 import Main from "../Main/Main.js";
@@ -8,7 +8,10 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./App.css";
 import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
-import { getForecastWeather, parseWeatherData } from "../utils/WeatherApi.js";
+import {
+  getForecastWeather,
+  parseWeatherData,
+} from "../../utils/WeatherApi.js";
 
 function App() {
   const weatherTemp = 100;
