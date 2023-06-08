@@ -1,5 +1,5 @@
 import "./ModalWithForm.css";
-import closeButton from "../images/CloseButton.svg"; //src/images/CloseButton.svg
+import closeButton from "../../images/CloseButton.svg"; //src/images/CloseButton.svg
 const ModalWithForm = ({
   children,
   buttonText = "Add Garment",
