@@ -1,0 +1,62 @@
+/* .modal__content {
+  padding: 0 0 29px 0;
+  position: relative;
+  background-size: cover;
+}
+
+.ItemModal__close-button {
+  background: transparent url(../images/CloseButton.svg) no-repeat;
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  width: 25px;
+  height: 25px;
+  border: none;
+}
+
+.ItemModal__close-button:hover {
+  cursor: pointer;
+}
+
+.ItemModal__image {
+} */
+.card_section {
+  margin: 40px 0 0 0;
+  font-family: "FamiljenGrotesk-Bold", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.card_items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 17px;
+  justify-content: center;
+  margin: 34px 0 0 0;
+}
+
+.card_name {
+  text-align: center;
+  position: relative;
+  top: 58px;
+  background-color: #ffffff;
+  max-width: 200px;
+  border-radius: 5px;
+  padding: 2px 12px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.card_image {
+  height: 328px;
+  width: 328px;
+  border-radius: 10px;
+  border: 0.1px solid black;
+  cursor: pointer;
+}
+.card {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+}
