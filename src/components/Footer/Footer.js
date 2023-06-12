@@ -1,11 +1,10 @@
 import "./Footer.css";
 
 const Footer = () => {
-  console.log("footer");
   return (
     <footer className="footer">
       <div>Developed by Ahmed Awad</div>
-      <div>2023</div>
+      <div>{new Date().getFullYear()}</div>
     </footer>
   );
 };

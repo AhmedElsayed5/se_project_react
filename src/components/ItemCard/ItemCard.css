@@ -1,9 +1,19 @@
-.card_image {
+.card__container {
+  position: relative;
+}
+.card__image {
   width: 328px;
   height: 328px;
   border-radius: 10px;
 }
 
-.card_name {
+.card__name {
+  border: 1cm;
+  background-color: #ffffff;
+  top: 15px;
+  left: 115px;
+  position: absolute;
+  margin: 0;
+  padding: 4px;
   text-align: center;
 }

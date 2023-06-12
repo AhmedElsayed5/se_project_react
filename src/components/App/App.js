@@ -33,14 +33,15 @@ function App() {
   };
 
   useEffect(() => {
-    getForecastWeather().then((data) => {
-      console.log(data);
-      const temperature = parseWeatherData(data);
-      setTemp(temperature);
-    });
+    getForecastWeather()
+      .then((data) => {
+        const temperature = parseWeatherData(data);
+        setTemp(temperature);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
-
-  console.log(temp);
 
   return (
     <div>
@@ -48,30 +49,69 @@ function App() {
       <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       <Footer />
       {activeModal === "create" && (
-        <ModalWithForm title="New Garment" onClose={handleCloseModal}>
-          <label>
-            Name
-            <input type="text" name="name" minLength="1" maxLength="30"></input>
-          </label>
-          <label>
-            Image
-            <input type="url" name="link" minLength="1" maxLength="30"></input>
-          </label>
-          <p>Select the weather type:</p>
-          <div>
-            <div>
-              <input type="radio" id="hot" value="hot" />
-              <label>Hot</label>
+        <ModalWithForm
+          title="New garment"
+          className="modal__title"
+          onClose={handleCloseModal}
+        >
+          <fieldset className="form__field">
+            <label className="modal__label">
+              Name
+              <input
+                className="modal__input"
+                type="text"
+                name="name"
+                minLength="1"
+                maxLength="30"
+                placeholder="Name"
+              ></input>
+            </label>
+          </fieldset>
+          <fieldset className="form__field">
+            <label className="modal__label">
+              Image
+              <input
+                className="modal__input"
+                type="url"
+                name="link"
+                minLength="1"
+                maxLength="30"
+                placeholder="Image"
+              ></input>
+            </label>
+          </fieldset>
+          <fieldset className="form__field">
+            <p className="modal__paragraph">Select the weather type:</p>
+            <div className="modal__radios">
+              <div className="modal__radio">
+                <input
+                  type="radio"
+                  id="hot"
+                  value="hot"
+                  className="modal__input-radio"
+                />
+                <label>Hot</label>
+              </div>
+              <div className="modal__radio">
+                <input
+                  type="radio"
+                  id="warm"
+                  value="warm"
+                  className="modal__input-radio"
+                />
+                <label>Warm</label>
+              </div>
+              <div className="modal__radio">
+                <input
+                  type="radio"
+                  id="cold"
+                  value="cold"
+                  className="modal__input-radio"
+                />
+                <label>Cold</label>
+              </div>
             </div>
-            <div>
-              <input type="radio" id="warm" value="warm" />
-              <label>Warm</label>
-            </div>
-            <div>
-              <input type="radio" id="cold" value="cold" />
-              <label>Cold</label>
-            </div>
-          </div>
+          </fieldset>
         </ModalWithForm>
       )}
       {activeModal === "preview" && (
