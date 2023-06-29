@@ -13,7 +13,7 @@ import {
   getForecastWeather,
   parseWeatherData,
 } from "../../utils/WeatherApi.js";
-import { CurrentTemperatureUnitContext } from "../contexts/CurrentTemperatureUnitContext.js";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min.js";
 import AddItemModal from "../AddItemModal/AddItemModal.js";
 import DeleteItemModal from "../DeleteItemModal/DeleteItemModal.js";
