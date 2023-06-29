@@ -1,6 +1,18 @@
 {
   "items": [
     {
+      "id": 0,
+      "name": "Beanie",
+      "weather": "cold",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Beanie.png?etag=bc10497cc80fa557f036e94f9999f7b2"
+    },
+    {
+      "id": 2,
+      "name": "Cap",
+      "weather": "hot",
+      "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Cap.png?etag=f3dad389b22909cafa73cff9f9a3d591"
+    },
+    {
       "id": 3,
       "name": "Coat",
       "weather": "cold",
@@ -77,6 +89,12 @@
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09",
       "id": 17
+    },
+    {
+      "name": "Shoes",
+      "weather": "hot",
+      "imageUrl": "https://media.wired.com/photos/6154ba291b38af32f7638ffd/191:100/w_2580,c_limit/Gear-Barefoot-Shoes-Freet-Tanga-SOURCE-Freet.jpg",
+      "id": 18
     }
   ]
 }

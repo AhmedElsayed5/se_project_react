@@ -51,13 +51,11 @@ function App() {
   const handleDeleteItemApi = () => {
     console.log("deleted tottaly" + `${itemToDelete}`);
     deleteItem(itemToDelete).then((res) => {
-      const newItems = items;
-      console
-        .log(itemToDelete)
-        .filter((item) => {
-          return item.id !== itemToDelete;
-        })
-        .catch((err) => console.log(err));
+      const newItems = items.filter((item) => {
+        return item.id !== itemToDelete;
+      });
+
+      console.log(newItems);
       setItems(newItems);
       console.log("IT DELETED");
       handleCloseModal();
@@ -73,10 +71,7 @@ function App() {
     // console.log();
     addItem(values)
       .then((res) => {
-        console.log(res);
-        console.log(values);
-        setItems([...items, values]);
-        console.log(items);
+        setItems([values, ...items]);
         handleCloseModal();
       })
       .catch((err) => console(err));
