@@ -1,0 +1,32 @@
+.delete-modal__content {
+  position: relative;
+  width: 670px;
+  height: 280px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete-modal__yes-answer {
+  color: #ff4d00;
+  border: none;
+  background-color: #ffffff;
+}
+
+.delete-modal__yes-answer:hover {
+  cursor: pointer;
+}
+
+.delete-modal__paragraph {
+  font-family: "Cabinet Grotesk";
+  font-style: normal;
+  font-weight: 700;
+  /* margin: 0; */
+  font-size: 20px;
+}

@@ -1,0 +1,17 @@
+.clothes-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.clothes-section__header {
+  display: flex;
+  gap: 30px;
+}
+.card__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  gap: 20px;
+}

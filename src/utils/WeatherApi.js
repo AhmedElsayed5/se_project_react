@@ -1,5 +1,3 @@
-// https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}
-
 const latitude = 44.34;
 const longitude = 10.99;
 const APIkey = "660b81e3ffe2fd933c9c5f96d6a279f5";
@@ -21,5 +19,12 @@ export const getForecastWeather = () => {
 export const parseWeatherData = (data) => {
   const main = data.main;
   const temperature = main && main.temp;
-  return Math.ceil(temperature);
+  const weather = {
+    temperature: {
+      F: Math.round(temperature),
+      C: Math.round(((temperature - 32) * 5) / 9),
+    },
+  };
+  console.log(weather);
+  return weather;
 };
