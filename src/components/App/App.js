@@ -50,16 +50,18 @@ function App() {
 
   const handleDeleteItemApi = () => {
     console.log("deleted tottaly" + `${itemToDelete}`);
-    deleteItem(itemToDelete).then((res) => {
-      const newItems = items.filter((item) => {
-        return item.id !== itemToDelete;
-      });
+    deleteItem(itemToDelete)
+      .then((res) => {
+        const newItems = items.filter((item) => {
+          return item.id !== itemToDelete;
+        });
 
-      console.log(newItems);
-      setItems(newItems);
-      console.log("IT DELETED");
-      handleCloseModal();
-    });
+        console.log(newItems);
+        setItems(newItems);
+        console.log("IT DELETED");
+        handleCloseModal();
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleToggleSwitchChange = () => {
@@ -88,6 +90,15 @@ function App() {
           console.log(res);
           setItems(res);
         });
+        const closeByEscape = (e) => {
+          if (e.key === "Escape") {
+            handleCloseModal();
+          }
+        };
+
+        document.addEventListener("keydown", closeByEscape);
+
+        return () => document.removeEventListener("keydown", closeByEscape);
       })
       .catch((err) => {
         console.log(err);
@@ -101,7 +112,7 @@ function App() {
       >
         <Header onCreateModal={handleCreateModal} />
 
-        <switch>
+        <Switch>
           <Route exact path="/">
             <Main
               weatherTemp={temp}
@@ -116,7 +127,7 @@ function App() {
               onCreateModal={handleCreateModal}
             />
           </Route>
-        </switch>
+        </Switch>
 
         <Footer />
         {activeModal === "create" && (

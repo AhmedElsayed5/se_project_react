@@ -17,3 +17,12 @@
   gap: 20px;
   align-items: center;
 }
+
+.header__add-clothes-button {
+  border: none;
+  background-color: white;
+}
+
+.header__add-clothes-button:hover {
+  cursor: pointer;
+}
