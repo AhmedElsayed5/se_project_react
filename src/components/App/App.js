@@ -90,19 +90,22 @@ function App() {
           console.log(res);
           setItems(res);
         });
-        const closeByEscape = (e) => {
-          if (e.key === "Escape") {
-            handleCloseModal();
-          }
-        };
-
-        document.addEventListener("keydown", closeByEscape);
-
-        return () => document.removeEventListener("keydown", closeByEscape);
       })
       .catch((err) => {
         console.log(err);
       });
+  }, []);
+
+  useEffect(() => {
+    const closeByEscape = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("keydown", closeByEscape);
+
+    return () => document.removeEventListener("keydown", closeByEscape);
   }, []);
 
   return (
