@@ -26,3 +26,29 @@
 .header__add-clothes-button:hover {
   cursor: pointer;
 }
+
+.header__sign-up-button {
+  border: none;
+  background-color: white;
+}
+
+.header__sign-up-button__invisible {
+  display: none;
+}
+
+.header__sign-up-button:hover {
+  cursor: pointer;
+}
+
+.header__log-in-button {
+  border: none;
+  background-color: white;
+}
+
+.header__log-in-button:hover {
+  cursor: pointer;
+}
+
+.header__log-in-button__invisible {
+  display: none;
+}

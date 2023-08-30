@@ -4,8 +4,14 @@ import avatar from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import addButton from "../../images/Addclothes.svg";
+import signUp from "../../images/Sign-Up.svg";
+import logIn from "../../images/Log-In.svg";
+import React, { useContext, useState } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const Header = ({ onCreateModal }) => {
+const Header = ({ onCreateModal, onLogInModal }) => {
+  const { currentUser } = useContext(CurrentUserContext);
+  console.log({ currentUser });
   return (
     <header className="header">
       <div className="header__logo">
@@ -22,13 +28,28 @@ const Header = ({ onCreateModal }) => {
           <button
             type="text"
             onClick={onCreateModal}
-            className="header__add-clothes-button"
+            // className={
+            //   currentUser === {}
+            //     ? "header__sign-up-button"
+            //     : "header__sign-up-button__invisible"
+            // }
+            className="header__sign-up-button"
           >
-            <img src={addButton} alt="Add Button" />
-            {/* {addButton} */}
+            <img src={signUp} alt="sign-up" />
+          </button>
+          <button
+            type="text"
+            onClick={onLogInModal}
+            // className={
+            //   currentUser === {}
+            //     ? "header__log-in-button"
+            //     : "header__log-in-button__invisible"
+            // }
+            className="header__log-in-button"
+          >
+            <img src={logIn} alt="log-in" />
           </button>
         </div>
-        <Link to="/profile"> Ahmed Awad</Link>
         <div>
           <img src={avatar} alt="logo" />
         </div>
