@@ -10,8 +10,6 @@ import React, { useContext, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const Header = ({ onCreateModal, onLogInModal }) => {
-  const { currentUser } = useContext(CurrentUserContext);
-  console.log({ currentUser });
   return (
     <header className="header">
       <div className="header__logo">

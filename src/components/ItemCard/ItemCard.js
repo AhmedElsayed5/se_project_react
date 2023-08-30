@@ -1,6 +1,10 @@
 import "./ItemCard.css";
+import React, { useContext, useState } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ItemCard = ({ item, onSelectCard }) => {
+  const { currentUser } = useContext(CurrentUserContext);
+  console.log({ currentUser });
   return (
     <div className="card__container">
       <div>
