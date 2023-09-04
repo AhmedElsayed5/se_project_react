@@ -9,7 +9,7 @@ const ItemModal = ({ selectedCard, onClose, onDelete }) => {
   console.log(selectedCard);
   const isOwn = selectedCard.owner === currentUser._id;
   console.log("item modal");
-  const itemDeleteButtonClassName = `item__delete-button ${isOwn}? 'item__delete-button_visible' : 'item__delete-button_hidden'}`;
+  // const itemDeleteButtonClassName = `item__delete-button ${isOwn}? 'item__delete-button_visible' : 'item__delete-button_hidden'}`;
   return (
     <div className={`modal`}>
       <div className="modal__content modal__content_preview">
@@ -27,7 +27,11 @@ const ItemModal = ({ selectedCard, onClose, onDelete }) => {
             <div>Weather type: {selectedCard.weather}</div>
           </div>
           <button
-            className={itemDeleteButtonClassName}
+            className={
+              isOwn
+                ? "item__delete-button_visible"
+                : "item__delete-button_hidden"
+            }
             onClick={() => onDelete(selectedCard?._id || selectedCard?.id)}
           >
             Delete Item

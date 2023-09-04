@@ -6,11 +6,13 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import addButton from "../../images/Addclothes.svg";
 import signUp from "../../images/Sign-Up.svg";
 import logIn from "../../images/Log-In.svg";
+import logOut from "../../images/Log-out.svg";
 import React, { useContext, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const Header = ({ onCreateModal, onLogInModal }) => {
+const Header = ({ onCreateModal, onLogInModal, isLoggedIn, onLogOut }) => {
   const { currentUser } = useContext(CurrentUserContext);
+  console.log(currentUser);
   return (
     <header className="header">
       <div className="header__logo">
@@ -28,7 +30,7 @@ const Header = ({ onCreateModal, onLogInModal }) => {
             type="text"
             onClick={onCreateModal}
             className={
-              currentUser === {}
+              isLoggedIn === false
                 ? "header__sign-up-button"
                 : "header__sign-up-button__invisible"
             }
@@ -39,14 +41,26 @@ const Header = ({ onCreateModal, onLogInModal }) => {
           <button
             type="text"
             onClick={onLogInModal}
-            className={
-              currentUser === {}
-                ? "header__log-in-button"
-                : "header__log-in-button__invisible"
-            }
+            // className={
+            // isLoggedIn === false
+            //   ? "header__log-in-button"
+            //   : "header__log-in-button__invisible"
+            // }
             // className="header__log-in-button"
           >
             <img src={logIn} alt="log-in" />
+          </button>
+          <button
+            type="text"
+            onClick={onLogOut}
+            // className={
+            //   isLoggedIn === false
+            //     ? "header__sign-up-button"
+            //     : "header__sign-up-button__invisible"
+            // }
+            // className="header__sign-up-button"
+          >
+            <img src={logOut} alt="sign-up" />
           </button>
           <p className="header__current-user">{currentUser?.name}</p>
         </div>

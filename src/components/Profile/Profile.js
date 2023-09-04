@@ -5,11 +5,17 @@ import "./Profile.css";
 
 // const [activeModal, setActiveModal] = useState("");
 
-const Profile = ({ items, onSelectCard, onCreateItemModal, onEditModal }) => {
+const Profile = ({
+  items,
+  onSelectCard,
+  onCreateItemModal,
+  onEditModal,
+  onLogOut,
+}) => {
   console.log("Profile");
   return (
     <div className="profile profile-section">
-      <SideBar onEditModal={onEditModal} />
+      <SideBar onEditModal={onEditModal} onLogOut={onLogOut} />
       <ClothesSection
         items={items}
         onSelectCard={onSelectCard}

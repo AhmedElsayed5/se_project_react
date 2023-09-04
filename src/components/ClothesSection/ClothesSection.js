@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 import addclothes from "../../images/Addclothes2.svg";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ClothesSection = ({ items, onSelectCard, onCreateItemModal }) => {
+  const { currentUser } = useContext(CurrentUserContext);
   return (
     <div className="clothes-section">
       <div className="clothes-section__header">
@@ -17,9 +19,11 @@ const ClothesSection = ({ items, onSelectCard, onCreateItemModal }) => {
         </button>
       </div>
       <div className="card__container">
-        {items.map((item, index) => (
-          <ItemCard item={item} key={index} onSelectCard={onSelectCard} />
-        ))}
+        {items
+          ?.filter((item) => item.owner === currentUser._id)
+          .map((item, index) => (
+            <ItemCard item={item} key={index} onSelectCard={onSelectCard} />
+          ))}
       </div>
     </div>
   );

@@ -41,7 +41,7 @@ function App() {
   const localToken = localStorage.getItem("jwt");
   // working on getting the current user after updating
   const [currentUser, setCurrentUser] = useState();
-
+  console.log(localStorage.getItem("loggedIn"));
   useEffect(() => {
     checkToken(localStorage.getItem("jwt"))
       .then((res) => res.json())
@@ -49,6 +49,9 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
+  }, []);
+  useEffect(() => {
+    setIsLoggedIn(localStorage.getItem("loggedIn"));
   }, []);
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -117,21 +120,28 @@ function App() {
   };
 
   const UpdateCurrentUser = () => {
+    console.log(localStorage.getItem("jwt"));
     checkToken(localStorage.getItem("jwt"))
       .then((res) => res.json())
       .then((res) => setCurrentUser(res));
     // console.log(data.token);
   };
+  const updateLoggedIn = () => {
+    setIsLoggedIn(localStorage.getItem("loggedIn"));
+  };
   const onLogIn = (values) => {
     logIn(values)
       .then((res) => {
         setUsers([users, ...users]);
+        console.log(res.token);
         localStorage.setItem("jwt", res.token);
+        // setIsLoggedIn(true);
+        localStorage.setItem("loggedIn", true);
+        updateLoggedIn();
         UpdateCurrentUser();
-        setIsLoggedIn(true);
         handleCloseModal();
       })
-      .then(UpdateCurrentUser())
+      .then()
       .catch((err) => {
         console.log(err);
         setIsLoggedIn(false);
@@ -142,8 +152,10 @@ function App() {
     signUp(values)
       .then((res) => {
         setUsers([users, ...users]);
-        UpdateCurrentUser(res);
-        setIsLoggedIn(true);
+        localStorage.setItem("jwt", res.token);
+        UpdateCurrentUser();
+        localStorage.setItem("loggedIn", true);
+        updateLoggedIn();
         handleCloseModal();
       })
       .catch((err) => {
@@ -158,6 +170,7 @@ function App() {
       .then((res) => {
         console.log(res);
         setIsLoggedIn(true);
+        // updateLoggedIn();
         handleCloseModal();
       })
       .then((res) => {
@@ -166,6 +179,16 @@ function App() {
   };
   console.log(currentTemperatureUnit);
   console.log(currentUser);
+
+  const onLogOut = () => {
+    console.log("log Out");
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("loggedIn");
+    setIsLoggedIn(false);
+    setCurrentUser({});
+  };
+  console.log(isLoggedIn);
+
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
@@ -202,16 +225,20 @@ function App() {
           <Header
             onCreateModal={handleCreateModal}
             onLogInModal={handleLogInModal}
+            isLoggedIn={isLoggedIn}
+            onLogOut={onLogOut}
           />
 
           <Switch>
             <Route path="/profile">
+              {isLoggedIn ? <Redirect to="/profile" /> : <Redirect to="/" />}
               <Profile
                 items={items}
                 onSelectCard={handleSelectedCard}
                 onEditModal={handleEditModal}
                 onSignUp={onSignUp}
                 onCreateItemModal={handleCreateItemModal}
+                onLogOut={onLogOut}
               />
             </Route>
             <Route path="/">

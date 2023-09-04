@@ -33,7 +33,7 @@
 }
 
 .header__sign-up-button__invisible {
-  display: none;
+  visibility: hidden;
 }
 
 .header__sign-up-button:hover {
@@ -50,7 +50,7 @@
 }
 
 .header__log-in-button__invisible {
-  display: none;
+  visibility: hidden;
 }
 
 .header__current-user {
