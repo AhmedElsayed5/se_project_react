@@ -38,7 +38,9 @@
   align-items: center;
   justify-content: center;
 }
-.modal__preview-delete-button {
+/* .modal__preview-delete-button {
+   */
+.item__delete-button {
   margin-top: 10px;
   margin-right: 10px;
   font-family: "Cabinet Grotesk";
@@ -51,6 +53,9 @@
   height: 24px;
   background-color: #ffffff;
   border: none;
+}
+.item__delete-button_hidden {
+  visibility: hidden;
 }
 .modal__preview-delete-button:hover {
   cursor: pointer;

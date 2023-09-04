@@ -25,7 +25,8 @@ import DeleteItemModal from "../DeleteItemModal/DeleteItemModal.js";
 import SignUpModal from "../SignUpModal/SignUpModal.js";
 import LogInModal from "../LogInModal/LogInModal.js";
 import { getItems, deleteItem, addItem } from "../../utils/api.js";
-import { signUp, logIn } from "../../utils/auth.js";
+import { signUp, logIn, checkToken, editProfile } from "../../utils/auth.js";
+import EditProfile from "../EditProfileModal/EditProfileModal.js";
 
 function App() {
   const weatherTemp = 100;
@@ -37,10 +38,28 @@ function App() {
   const [items, setItems] = useState([]);
   const [users, setUsers] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
+  const localToken = localStorage.getItem("jwt");
+  // working on getting the current user after updating
+  const [currentUser, setCurrentUser] = useState();
 
+  useEffect(() => {
+    checkToken(localStorage.getItem("jwt"))
+      .then((res) => res.json())
+      .then((res) => setCurrentUser(res))
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   const handleCreateModal = () => {
     setActiveModal("create");
+  };
+
+  const handleCreateItemModal = () => {
+    setActiveModal("createItem");
+  };
+
+  const handleEditModal = () => {
+    setActiveModal("edit");
   };
 
   const handleLogInModal = () => {
@@ -65,12 +84,13 @@ function App() {
 
   const handleDeleteItemApi = () => {
     console.log("deleted tottaly" + `${itemToDelete}`);
-    deleteItem(itemToDelete)
+    const token = localStorage.getItem("jwt");
+    deleteItem(itemToDelete, token)
       .then((res) => {
         const newItems = items.filter((item) => {
           return item.id !== itemToDelete;
         });
-
+        console.log(newItems);
         console.log(newItems);
         setItems(newItems);
         console.log("IT DELETED");
@@ -78,6 +98,7 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
+  console.log(items);
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
@@ -85,7 +106,9 @@ function App() {
   };
 
   const onAddItem = (values) => {
-    addItem(values)
+    const token = localStorage.getItem("jwt");
+    console.log(values);
+    addItem(token, values)
       .then((res) => {
         setItems([values, ...items]);
         handleCloseModal();
@@ -93,18 +116,22 @@ function App() {
       .catch((err) => console(err));
   };
 
-  const UpdateCurrentUser = (user) => {
-    setCurrentUser(user);
+  const UpdateCurrentUser = () => {
+    checkToken(localStorage.getItem("jwt"))
+      .then((res) => res.json())
+      .then((res) => setCurrentUser(res));
+    // console.log(data.token);
   };
   const onLogIn = (values) => {
     logIn(values)
       .then((res) => {
         setUsers([users, ...users]);
-        UpdateCurrentUser(res.user);
         localStorage.setItem("jwt", res.token);
+        UpdateCurrentUser();
         setIsLoggedIn(true);
         handleCloseModal();
       })
+      .then(UpdateCurrentUser())
       .catch((err) => {
         console.log(err);
         setIsLoggedIn(false);
@@ -125,6 +152,18 @@ function App() {
       });
   };
 
+  const onEditProfile = (values) => {
+    const token = localStorage.getItem("jwt");
+    editProfile(token, values)
+      .then((res) => {
+        console.log(res);
+        setIsLoggedIn(true);
+        handleCloseModal();
+      })
+      .then((res) => {
+        UpdateCurrentUser();
+      });
+  };
   console.log(currentTemperatureUnit);
   console.log(currentUser);
   useEffect(() => {
@@ -170,7 +209,9 @@ function App() {
               <Profile
                 items={items}
                 onSelectCard={handleSelectedCard}
-                onCreateModal={handleCreateModal}
+                onEditModal={handleEditModal}
+                onSignUp={onSignUp}
+                onCreateItemModal={handleCreateItemModal}
               />
             </Route>
             <Route path="/">
@@ -184,10 +225,10 @@ function App() {
           </Switch>
 
           <Footer />
-          {activeModal === "create" && (
+          {activeModal === "createItem" && (
             <AddItemModal
               handleCloseModal={handleCloseModal}
-              isOpen={activeModal === "create"}
+              isOpen={activeModal === "createItem"}
               onAddItem={onAddItem}
             />
           )}
@@ -216,6 +257,13 @@ function App() {
             <DeleteItemModal
               onClose={handleCloseModal}
               onDelete={handleDeleteItemApi}
+            />
+          )}
+          {activeModal === "edit" && (
+            <EditProfile
+              handleCloseModal={handleCloseModal}
+              onEditProfile={onEditProfile}
+              isOpen={activeModal === "edit"}
             />
           )}
         </CurrentTemperatureUnitContext.Provider>

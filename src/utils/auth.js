@@ -25,11 +25,23 @@ export const logIn = ({ email, password }) => {
 };
 
 export const checkToken = (token) => {
-  return fetch(`${baseUrl}/user/me`, {
+  console.log(token);
+  return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
-      headers: headers,
+      "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
+  });
+};
+
+export const editProfile = (token, { name, avatar }) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatar }),
   }).then(checkResponse);
 };

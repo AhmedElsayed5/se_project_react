@@ -10,6 +10,7 @@ import React, { useContext, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const Header = ({ onCreateModal, onLogInModal }) => {
+  const { currentUser } = useContext(CurrentUserContext);
   return (
     <header className="header">
       <div className="header__logo">
@@ -26,27 +27,28 @@ const Header = ({ onCreateModal, onLogInModal }) => {
           <button
             type="text"
             onClick={onCreateModal}
-            // className={
-            //   currentUser === {}
-            //     ? "header__sign-up-button"
-            //     : "header__sign-up-button__invisible"
-            // }
-            className="header__sign-up-button"
+            className={
+              currentUser === {}
+                ? "header__sign-up-button"
+                : "header__sign-up-button__invisible"
+            }
+            // className="header__sign-up-button"
           >
             <img src={signUp} alt="sign-up" />
           </button>
           <button
             type="text"
             onClick={onLogInModal}
-            // className={
-            //   currentUser === {}
-            //     ? "header__log-in-button"
-            //     : "header__log-in-button__invisible"
-            // }
-            className="header__log-in-button"
+            className={
+              currentUser === {}
+                ? "header__log-in-button"
+                : "header__log-in-button__invisible"
+            }
+            // className="header__log-in-button"
           >
             <img src={logIn} alt="log-in" />
           </button>
+          <p className="header__current-user">{currentUser?.name}</p>
         </div>
         <div>
           <img src={avatar} alt="logo" />

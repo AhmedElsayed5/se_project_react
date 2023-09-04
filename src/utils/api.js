@@ -22,6 +22,7 @@ export const getItems = (token) => {
 };
 
 export const deleteItem = (id, token) => {
+  console.log(id);
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
@@ -31,12 +32,13 @@ export const deleteItem = (id, token) => {
   }).then(checkResponse);
 };
 
-export const addItem = ({ name, weather, imageUrl }, token) => {
-  //   console.log({ name, weather, imageUrl });
+export const addItem = (token, { name, weather, imageUrl }) => {
+  console.log({ name, weather, imageUrl });
+  console.log(token);
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
-      headers: headers,
+      "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({ name, weather, imageUrl }),

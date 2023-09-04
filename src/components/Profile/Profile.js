@@ -1,17 +1,19 @@
-import React from "react";
+import { React, useState } from "react";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import "./Profile.css";
 
-const Profile = ({ items, onSelectCard, onCreateModal }) => {
+// const [activeModal, setActiveModal] = useState("");
+
+const Profile = ({ items, onSelectCard, onCreateItemModal, onEditModal }) => {
   console.log("Profile");
   return (
     <div className="profile profile-section">
-      <SideBar />
+      <SideBar onEditModal={onEditModal} />
       <ClothesSection
         items={items}
         onSelectCard={onSelectCard}
-        onCreateModal={onCreateModal}
+        onCreateItemModal={onCreateItemModal}
       />
     </div>
   );

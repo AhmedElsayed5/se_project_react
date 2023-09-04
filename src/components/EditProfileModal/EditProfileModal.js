@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const SignUp = ({ handleCloseModal, onSignUp, isOpen }) => {
+const EditProfile = ({ handleCloseModal, onEditProfile, isOpen }) => {
   const [name, setName] = useState("");
   const handleNameChange = (e) => {
     console.log(e.target.value);
@@ -14,60 +14,21 @@ const SignUp = ({ handleCloseModal, onSignUp, isOpen }) => {
     setUrl(e.target.value);
   };
 
-  const [email, setEmail] = useState("");
-  const handleEmailChange = (e) => {
-    console.log(e.target.value);
-    setEmail(e.target.value);
-  };
-
-  const [password, setPassWord] = useState("");
-  const handlePassWordChange = (e) => {
-    console.log(e.target.value);
-    setPassWord(e.target.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSignUp({ email, password, name, avatar });
+    // onSignUp({ email, password, name, avatar });
+    onEditProfile({ name, avatar });
   };
   return (
     <ModalWithForm
-      title="Sign Up"
-      buttonText="Next"
+      title="Edit Profile"
       className="modal__title"
+      buttonText="Save Changes"
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
       <fieldset className="form__field">
-        <label className="modal__label">
-          Email
-          <input
-            className="modal__input"
-            type="text"
-            name="email"
-            minLength="1"
-            maxLength="60"
-            placeholder="Email"
-            value={email}
-            required={true}
-            onChange={handleEmailChange}
-          ></input>
-        </label>
-        <label className="modal__label">
-          Password
-          <input
-            className="modal__input"
-            type="password"
-            name="password"
-            minLength="1"
-            maxLength="30"
-            placeholder="Password"
-            value={password}
-            required={true}
-            onChange={handlePassWordChange}
-          ></input>
-        </label>
         <label className="modal__label">
           Name
           <input
@@ -101,4 +62,4 @@ const SignUp = ({ handleCloseModal, onSignUp, isOpen }) => {
   );
 };
 
-export default SignUp;
+export default EditProfile;

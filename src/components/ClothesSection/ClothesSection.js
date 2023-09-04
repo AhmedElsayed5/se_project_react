@@ -3,14 +3,14 @@ import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
 import addclothes from "../../images/Addclothes2.svg";
 
-const ClothesSection = ({ items, onSelectCard, onCreateModal }) => {
+const ClothesSection = ({ items, onSelectCard, onCreateItemModal }) => {
   return (
     <div className="clothes-section">
       <div className="clothes-section__header">
         <div>Your Items</div>
         <button
           type="text"
-          onClick={onCreateModal}
+          onClick={onCreateItemModal}
           className="clothes-section__add-button"
         >
           <img src={addclothes} alt="Add Button" />
