@@ -4,7 +4,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ItemCard = ({ item, onSelectCard }) => {
   const { currentUser } = useContext(CurrentUserContext);
-  console.log(currentUser);
+  // console.log(currentUser);
   return (
     <div className="card__container">
       <div>

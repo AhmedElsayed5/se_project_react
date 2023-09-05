@@ -13,6 +13,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 const Header = ({ onCreateModal, onLogInModal, isLoggedIn, onLogOut }) => {
   const { currentUser } = useContext(CurrentUserContext);
   console.log(currentUser);
+  console.log(isLoggedIn);
   return (
     <header className="header">
       <div className="header__logo">
@@ -29,12 +30,12 @@ const Header = ({ onCreateModal, onLogInModal, isLoggedIn, onLogOut }) => {
           <button
             type="text"
             onClick={onCreateModal}
-            className={
-              isLoggedIn === false
-                ? "header__sign-up-button"
-                : "header__sign-up-button__invisible"
-            }
-            // className="header__sign-up-button"
+            // className={
+            //   isLoggedIn === false
+            //     ? "header__sign-up-button"
+            //     : "header__sign-up-button__invisible"
+            // }
+            className="header__sign-up-button"
           >
             <img src={signUp} alt="sign-up" />
           </button>
@@ -42,11 +43,11 @@ const Header = ({ onCreateModal, onLogInModal, isLoggedIn, onLogOut }) => {
             type="text"
             onClick={onLogInModal}
             // className={
-            // isLoggedIn === false
-            //   ? "header__log-in-button"
-            //   : "header__log-in-button__invisible"
+            //   isLoggedIn === false
+            //     ? "header__log-in-button"
+            //     : "header__log-in-button__invisible"
             // }
-            // className="header__log-in-button"
+            className="header__log-in-button"
           >
             <img src={logIn} alt="log-in" />
           </button>
@@ -54,11 +55,11 @@ const Header = ({ onCreateModal, onLogInModal, isLoggedIn, onLogOut }) => {
             type="text"
             onClick={onLogOut}
             // className={
-            //   isLoggedIn === false
+            //   isLoggedIn === true
             //     ? "header__sign-up-button"
             //     : "header__sign-up-button__invisible"
             // }
-            // className="header__sign-up-button"
+            className="header__sign-up-button"
           >
             <img src={logOut} alt="sign-up" />
           </button>
