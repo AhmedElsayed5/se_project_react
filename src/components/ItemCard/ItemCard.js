@@ -10,6 +10,34 @@ const ItemCard = ({ item, onSelectCard, onLikeButton }) => {
   );
   return (
     <div className="card__container">
+      <div className="card__header">
+        <p className="card__header-name">{item.name}</p>
+        <div className="card__header-like-button">
+          {isLiked ? (
+            <button className="card__like-button">
+              <img
+                src={likebutton}
+                className="card__like-button__liked"
+                onClick={() => {
+                  onLikeButton(isLiked, item._id);
+                  setIsLiked(!isLiked);
+                }}
+              />
+            </button>
+          ) : (
+            <button className="card__like-button">
+              <img
+                src={likebutton}
+                className="card__like-button__unliked"
+                onClick={() => {
+                  onLikeButton(isLiked, item._id);
+                  setIsLiked(!isLiked);
+                }}
+              />
+            </button>
+          )}
+        </div>
+      </div>
       <div>
         <img
           src={item?.link || item?.imageUrl}
@@ -17,32 +45,6 @@ const ItemCard = ({ item, onSelectCard, onLikeButton }) => {
           onClick={() => onSelectCard(item)}
           alt={item.name}
         />
-      </div>
-      <div className="card__name">
-        {item.name}
-        {isLiked ? (
-          <button>
-            <img
-              src={likebutton}
-              className="card__like-button__liked"
-              onClick={() => {
-                onLikeButton(isLiked, item._id);
-                setIsLiked(!isLiked);
-              }}
-            />
-          </button>
-        ) : (
-          <button>
-            <img
-              src={likebutton}
-              className="card__like-button__unliked"
-              onClick={() => {
-                onLikeButton(isLiked, item._id);
-                setIsLiked(!isLiked);
-              }}
-            />
-          </button>
-        )}
       </div>
     </div>
   );

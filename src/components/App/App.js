@@ -59,8 +59,8 @@ function App() {
   useEffect(() => {
     setIsLoggedIn(localStorage.getItem("loggedIn"));
   }, []);
-  const handleCreateModal = () => {
-    setActiveModal("create");
+  const handleSignUpModal = () => {
+    setActiveModal("signup");
   };
 
   const handleCreateItemModal = () => {
@@ -231,7 +231,8 @@ function App() {
           value={{ currentTemperatureUnit, handleToggleSwitchChange }}
         >
           <Header
-            onCreateModal={handleCreateModal}
+            onCreateModal={handleSignUpModal}
+            onCreateItemModal={handleCreateItemModal}
             onLogInModal={handleLogInModal}
             isLoggedIn={isLoggedIn}
             onLogOut={onLogOut}
@@ -268,10 +269,10 @@ function App() {
               onAddItem={onAddItem}
             />
           )}
-          {activeModal === "create" && (
+          {activeModal === "signup" && (
             <SignUpModal
               handleCloseModal={handleCloseModal}
-              isOpen={activeModal === "create"}
+              isOpen={activeModal === "signup"}
               onSignUp={onSignUp}
             />
           )}

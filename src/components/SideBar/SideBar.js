@@ -14,20 +14,22 @@ const SideBar = ({ onEditModal, onLogOut }) => {
           <img className="side-bar__image" src={avatar} alt="logo" />
           <div className="side-bar__title">{currentUser?.name}</div>
         </div>
-        <button
-          type="text"
-          onClick={onEditModal}
-          className="side-bar__edit-profile-button"
-        >
-          <img src={editProfile} alt="edit profile" />
-        </button>
-        <button
-          type="text"
-          onClick={onLogOut}
-          className="side-bar__edit-profile-button"
-        >
-          <img src={logOut} alt="edit profile" />
-        </button>
+        <div className="side-bar__edit-profile-button">
+          <button
+            type="text"
+            onClick={onEditModal}
+            className="side-bar__edit-profile-button side-bar__button-text"
+          >
+            Change profile data
+          </button>
+          <button
+            type="text"
+            onClick={onLogOut}
+            className="side-bar__edit-profile-button side-bar__button-text"
+          >
+            Log out
+          </button>
+        </div>
       </div>
     </div>
   );

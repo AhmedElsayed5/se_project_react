@@ -20,7 +20,7 @@ const Profile = ({
       <ClothesSection
         items={items}
         onSelectCard={onSelectCard}
-        onCreateItemModal={onCreateItemModal}
+        // onCreateItemModal={onCreateItemModal}
         onLikeButton={onLikeButton}
       />
     </div>

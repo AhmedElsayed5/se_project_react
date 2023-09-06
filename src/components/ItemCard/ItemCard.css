@@ -25,3 +25,23 @@
 .card__like-button__unliked {
   background-color: white;
 }
+
+.card__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  top: 5px;
+  left: 110px;
+}
+
+.card__like-button {
+  border: none;
+  background: transparent;
+  height: 19px;
+  width: 21px;
+}
+
+.card__like-button:hover {
+  cursor: pointer;
+}

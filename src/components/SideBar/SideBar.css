@@ -10,26 +10,31 @@
   line-height: 25px;
   text-align: left;
 }
-
-.side-bar__image {
-  width: 50px;
-  height: 50px;
-  padding-right: 10px;
-}
 .side-bar__name-image {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.side-bar__image-column {
-  display: flex;
-  flex-direction: column;
+.side-bar__image {
+  width: 50px;
+  height: 50px;
+  padding-right: 10px;
 }
 
+.side-bar__button-text {
+  color: #000;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
 .side-bar__edit-profile-button {
   border: none;
   background-color: white;
   padding-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .side-bar__edit-profile-button:hover {
