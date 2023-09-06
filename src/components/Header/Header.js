@@ -3,17 +3,11 @@ import logo from "../../images/logo.svg";
 import avatar from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import addButton from "../../images/Addclothes.svg";
-import signUp from "../../images/Sign-Up.svg";
-import logIn from "../../images/Log-In.svg";
-import logOut from "../../images/Log-out.svg";
 import React, { useContext, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const Header = ({ onCreateModal, onLogInModal, isLoggedIn, onLogOut }) => {
   const { currentUser } = useContext(CurrentUserContext);
-  console.log(currentUser);
-  console.log(isLoggedIn);
   return (
     <header className="header">
       <div className="header__logo">
@@ -27,43 +21,31 @@ const Header = ({ onCreateModal, onLogInModal, isLoggedIn, onLogOut }) => {
       <div className="header__avatar-logo">
         <ToggleSwitch />
         <div>
-          <button
-            type="text"
-            onClick={onCreateModal}
-            // className={
-            //   isLoggedIn === false
-            //     ? "header__sign-up-button"
-            //     : "header__sign-up-button__invisible"
-            // }
-            className="header__sign-up-button"
-          >
-            <img src={signUp} alt="sign-up" />
-          </button>
-          <button
-            type="text"
-            onClick={onLogInModal}
-            // className={
-            //   isLoggedIn === false
-            //     ? "header__log-in-button"
-            //     : "header__log-in-button__invisible"
-            // }
-            className="header__log-in-button"
-          >
-            <img src={logIn} alt="log-in" />
-          </button>
-          <button
-            type="text"
-            onClick={onLogOut}
-            // className={
-            //   isLoggedIn === true
-            //     ? "header__sign-up-button"
-            //     : "header__sign-up-button__invisible"
-            // }
-            className="header__sign-up-button"
-          >
-            <img src={logOut} alt="sign-up" />
-          </button>
-          <p className="header__current-user">{currentUser?.name}</p>
+          {isLoggedIn ? (
+            <div className="header__user-buttons">
+              {/* <button type="text" onClick={onLogOut} className="header__button">
+                Logout
+              </button> */}
+              <p className="header__current-user">{currentUser?.name}</p>
+            </div>
+          ) : (
+            <div className="header__user-buttons">
+              <button
+                type="text"
+                onClick={onLogInModal}
+                className="header__button"
+              >
+                Log In
+              </button>
+              <button
+                type="text"
+                onClick={onCreateModal}
+                className="header__button"
+              >
+                Sign Up
+              </button>
+            </div>
+          )}
         </div>
         <div>
           <img src={avatar} alt="logo" />

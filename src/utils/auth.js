@@ -45,3 +45,25 @@ export const editProfile = (token, { name, avatar }) => {
     body: JSON.stringify({ name, avatar }),
   }).then(checkResponse);
 };
+
+export const likeItem = (token, id) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    // body: JSON.stringify({ name, avatar }),
+  }).then(checkResponse);
+};
+
+export const disLikeItem = (token, id) => {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    // body: JSON.stringify({ name, avatar }),
+  }).then(checkResponse);
+};

@@ -17,3 +17,11 @@
   padding: 4px;
   text-align: center;
 }
+
+.card__like-button__liked {
+  background-color: red;
+}
+
+.card__like-button__unliked {
+  background-color: white;
+}

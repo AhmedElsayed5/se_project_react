@@ -25,7 +25,14 @@ import DeleteItemModal from "../DeleteItemModal/DeleteItemModal.js";
 import SignUpModal from "../SignUpModal/SignUpModal.js";
 import LogInModal from "../LogInModal/LogInModal.js";
 import { getItems, deleteItem, addItem } from "../../utils/api.js";
-import { signUp, logIn, checkToken, editProfile } from "../../utils/auth.js";
+import {
+  signUp,
+  logIn,
+  checkToken,
+  editProfile,
+  likeItem,
+  disLikeItem,
+} from "../../utils/auth.js";
 import EditProfile from "../EditProfileModal/EditProfileModal.js";
 
 function App() {
@@ -41,7 +48,6 @@ function App() {
   const localToken = localStorage.getItem("jwt");
   // working on getting the current user after updating
   const [currentUser, setCurrentUser] = useState();
-  console.log(localStorage.getItem("loggedIn"));
   useEffect(() => {
     checkToken(localStorage.getItem("jwt"))
       .then((res) => res.json())
@@ -80,28 +86,22 @@ function App() {
   };
 
   const handleDeleteItem = (id) => {
-    console.log(id);
     setItemToDelete(id);
     setActiveModal("delete");
   };
 
   const handleDeleteItemApi = () => {
-    console.log("deleted tottaly" + `${itemToDelete}`);
     const token = localStorage.getItem("jwt");
     deleteItem(itemToDelete, token)
       .then((res) => {
         const newItems = items.filter((item) => {
-          return item.id !== itemToDelete;
+          return item._id !== itemToDelete;
         });
-        console.log(newItems);
-        console.log(newItems);
         setItems(newItems);
-        console.log("IT DELETED");
         handleCloseModal();
       })
       .catch((err) => console.log(err));
   };
-  console.log(items);
 
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
@@ -110,21 +110,19 @@ function App() {
 
   const onAddItem = (values) => {
     const token = localStorage.getItem("jwt");
-    console.log(values);
+
     addItem(token, values)
       .then((res) => {
-        setItems([values, ...items]);
+        setItems([res, ...items]);
         handleCloseModal();
       })
       .catch((err) => console(err));
   };
 
   const UpdateCurrentUser = () => {
-    console.log(localStorage.getItem("jwt"));
     checkToken(localStorage.getItem("jwt"))
       .then((res) => res.json())
       .then((res) => setCurrentUser(res));
-    // console.log(data.token);
   };
   const updateLoggedIn = () => {
     setIsLoggedIn(localStorage.getItem("loggedIn"));
@@ -133,9 +131,7 @@ function App() {
     logIn(values)
       .then((res) => {
         setUsers([users, ...users]);
-        console.log(res.token);
         localStorage.setItem("jwt", res.token);
-        // setIsLoggedIn(true);
         localStorage.setItem("loggedIn", true);
         updateLoggedIn();
         UpdateCurrentUser();
@@ -168,26 +164,39 @@ function App() {
     const token = localStorage.getItem("jwt");
     editProfile(token, values)
       .then((res) => {
-        console.log(res);
         setIsLoggedIn(true);
-        // updateLoggedIn();
         handleCloseModal();
       })
       .then((res) => {
         UpdateCurrentUser();
       });
   };
-  console.log(currentTemperatureUnit);
-  console.log(currentUser);
 
   const onLogOut = () => {
-    console.log("log Out");
     localStorage.removeItem("jwt");
     localStorage.removeItem("loggedIn");
     setIsLoggedIn(false);
     setCurrentUser({});
   };
-  console.log(isLoggedIn);
+
+  const onLikeButton = (isLiked, id) => {
+    const token = localStorage.getItem("jwt");
+    isLiked
+      ? disLikeItem(token, id)
+          .then(({ item: updatedCard }) => {
+            setItems((cards) =>
+              cards.map((c) => (c._id === id ? updatedCard : c))
+            );
+          })
+          .catch((err) => console.log(err))
+      : likeItem(token, id)
+          .then(({ item: updatedCard }) => {
+            setItems((cards) =>
+              cards.map((c) => (c._id === id ? updatedCard : c))
+            );
+          })
+          .catch((err) => console.log(err));
+  };
 
   useEffect(() => {
     getForecastWeather()
@@ -195,7 +204,6 @@ function App() {
         const temperature = parseWeatherData(data);
         setTemp(temperature);
         getItems().then((res) => {
-          console.log(res);
           setItems(res);
         });
       })
@@ -239,6 +247,7 @@ function App() {
                 onSignUp={onSignUp}
                 onCreateItemModal={handleCreateItemModal}
                 onLogOut={onLogOut}
+                onLikeButton={onLikeButton}
               />
             </Route>
             <Route path="/">

@@ -4,7 +4,12 @@ import "./ClothesSection.css";
 import addclothes from "../../images/Addclothes2.svg";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-const ClothesSection = ({ items, onSelectCard, onCreateItemModal }) => {
+const ClothesSection = ({
+  items,
+  onSelectCard,
+  onCreateItemModal,
+  onLikeButton,
+}) => {
   const { currentUser } = useContext(CurrentUserContext);
   return (
     <div className="clothes-section">
@@ -22,7 +27,12 @@ const ClothesSection = ({ items, onSelectCard, onCreateItemModal }) => {
         {items
           ?.filter((item) => item.owner === currentUser._id)
           .map((item, index) => (
-            <ItemCard item={item} key={index} onSelectCard={onSelectCard} />
+            <ItemCard
+              item={item}
+              key={index}
+              onSelectCard={onSelectCard}
+              onLikeButton={onLikeButton}
+            />
           ))}
       </div>
     </div>

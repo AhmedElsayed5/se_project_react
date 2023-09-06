@@ -23,41 +23,33 @@
   background-color: white;
 }
 
+.header__button {
+  border: none;
+  background-color: white;
+  color: #000;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.header__button:hover {
+  cursor: pointer;
+}
 .header__add-clothes-button:hover {
   cursor: pointer;
 }
 
-.header__sign-up-button {
-  border: none;
-  background-color: white;
-}
-
-.header__sign-up-button__invisible {
-  visibility: hidden;
-}
-
-.header__sign-up-button:hover {
-  cursor: pointer;
-}
-
-.header__log-in-button {
-  border: none;
-  background-color: white;
-}
-
-.header__log-in-button:hover {
-  cursor: pointer;
-}
-
-.header__log-in-button__invisible {
-  visibility: hidden;
-}
-
 .header__current-user {
-  font-family: "Angsana New";
+  color: #000;
+  font-family: "Cabinet Grotesk", sans-serif;
   font-size: 20px;
+  font-style: normal;
   font-weight: 700;
-  line-height: 25px;
-  text-align: left;
-  color: black;
+  line-height: normal;
+}
+
+.header__user-buttons {
+  display: flex;
 }

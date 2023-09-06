@@ -11,6 +11,7 @@ const Profile = ({
   onCreateItemModal,
   onEditModal,
   onLogOut,
+  onLikeButton,
 }) => {
   console.log("Profile");
   return (
@@ -20,6 +21,7 @@ const Profile = ({
         items={items}
         onSelectCard={onSelectCard}
         onCreateItemModal={onCreateItemModal}
+        onLikeButton={onLikeButton}
       />
     </div>
   );
