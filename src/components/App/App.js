@@ -145,6 +145,7 @@ function App() {
   };
 
   const onSignUp = (values) => {
+    // debugger;
     signUp(values)
       .then((res) => {
         setUsers([users, ...users]);
@@ -152,6 +153,7 @@ function App() {
         UpdateCurrentUser();
         localStorage.setItem("loggedIn", true);
         updateLoggedIn();
+
         handleCloseModal();
       })
       .catch((err) => {
