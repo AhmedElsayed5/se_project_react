@@ -256,6 +256,7 @@ function App() {
             <Route path="/">
               {isLoggedIn ? <Redirect to="/profile" /> : <Redirect to="/" />}
               <Main
+                isLoggedIn={isLoggedIn}
                 weatherTemp={temp}
                 onSelectCard={handleSelectedCard}
                 items={items}

@@ -38,8 +38,7 @@
   align-items: center;
   justify-content: center;
 }
-/* .modal__preview-delete-button {
-   */
+
 .item__delete-button {
   margin-top: 10px;
   margin-right: 10px;
@@ -54,9 +53,27 @@
   background-color: #ffffff;
   border: none;
 }
+
 .item__delete-button_hidden {
   visibility: hidden;
 }
-.modal__preview-delete-button:hover {
+
+.item__delete-button:hover {
   cursor: pointer;
+}
+
+.modal__text-container {
+  padding: 0;
+  margin: 0;
+}
+
+.modal__preview-text {
+  padding: 0 0 0 10px;
+  margin: 0;
+  color: #000;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }

@@ -1,5 +1,7 @@
 .card__container {
   position: relative;
+  display: flex;
+  flex-direction: row;
 }
 .card__image {
   width: 328px;
@@ -13,26 +15,18 @@
   top: 15px;
   left: 115px;
   position: absolute;
-  margin: 0;
+  /* margin: 0; */
   padding: 4px;
   text-align: center;
 }
 
-.card__like-button__liked {
-  background-color: red;
+.card__header-name {
+  padding: 0 5px;
+  background-color: #ffffff;
 }
 
-.card__like-button__unliked {
-  background-color: white;
-}
-
-.card__header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  position: absolute;
-  top: 5px;
-  left: 110px;
+.card__header-like-button {
+  background: transparent;
 }
 
 .card__like-button {
@@ -44,4 +38,14 @@
 
 .card__like-button:hover {
   cursor: pointer;
+}
+
+.card__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  margin: auto;
+  top: 5px;
+  left: 110px;
 }

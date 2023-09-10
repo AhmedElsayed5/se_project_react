@@ -10,7 +10,6 @@ const Header = ({
   onCreateModal,
   onLogInModal,
   isLoggedIn,
-  onLogOut,
   onCreateItemModal,
 }) => {
   const { currentUser } = useContext(CurrentUserContext);

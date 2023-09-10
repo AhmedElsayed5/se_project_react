@@ -4,7 +4,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import { useMemo, useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
-function Main({ weatherTemp, onSelectCard, items }) {
+function Main({ weatherTemp, onSelectCard, items, isLoggedIn }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
@@ -30,7 +30,12 @@ function Main({ weatherTemp, onSelectCard, items }) {
         {currentTemperatureUnit} / You may want to wear:
         <div className="card_items">
           {filteredCards.map((item, index) => (
-            <ItemCard item={item} onSelectCard={onSelectCard} key={index} />
+            <ItemCard
+              item={item}
+              isLoggedIn={isLoggedIn}
+              onSelectCard={onSelectCard}
+              key={index}
+            />
           ))}
         </div>
       </section>

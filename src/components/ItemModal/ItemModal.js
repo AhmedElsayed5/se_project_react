@@ -29,8 +29,8 @@ const ItemModal = ({ selectedCard, onClose, onDelete }) => {
           <button
             className={
               isOwn
-                ? "item__delete-button_visible"
-                : "item__delete-button_hidden"
+                ? "item__delete-button_visible item__delete-button"
+                : "item__delete-button_hidden item__delete-button"
             }
             onClick={() => onDelete(selectedCard?._id || selectedCard?.id)}
           >

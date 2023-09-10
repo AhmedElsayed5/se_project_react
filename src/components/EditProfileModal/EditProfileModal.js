@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const EditProfile = ({ handleCloseModal, onEditProfile, isOpen }) => {
   const [name, setName] = useState("");
+  const { currentUser } = useContext(CurrentUserContext);
   const handleNameChange = (e) => {
     console.log(e.target.value);
     setName(e.target.value);
@@ -37,10 +39,12 @@ const EditProfile = ({ handleCloseModal, onEditProfile, isOpen }) => {
             name="name"
             minLength="1"
             maxLength="30"
-            placeholder="Name"
+            placeholder={currentUser.name}
             value={name}
             onChange={handleNameChange}
-          ></input>
+          >
+            {/* {currentUser.name} */}
+          </input>
         </label>
       </fieldset>
       <fieldset className="form__field">
@@ -52,7 +56,7 @@ const EditProfile = ({ handleCloseModal, onEditProfile, isOpen }) => {
             name="avatar"
             minLength="1"
             maxLength="3000"
-            placeholder="Avatar URL"
+            placeholder={currentUser.avatar}
             value={avatar}
             onChange={handleUrlChange}
           ></input>
