@@ -19,7 +19,7 @@ const DeleteItemModal = ({ onClose, onDelete }) => {
           Yes, delete item
         </button>
         <button
-          className="delete-modal__paragraph modal__preview-delete-button"
+          className="delete-modal__paragraph modal__preview-delete-button delete-modal__cancel-button"
           onClick={onClose}
         >
           Cancel

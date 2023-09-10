@@ -244,6 +244,7 @@ function App() {
             <Route path="/profile">
               {isLoggedIn ? <Redirect to="/profile" /> : <Redirect to="/" />}
               <Profile
+                isLoggedIn={isLoggedIn}
                 items={items}
                 onSelectCard={handleSelectedCard}
                 onEditModal={handleEditModal}

@@ -9,6 +9,7 @@ const ClothesSection = ({
   onSelectCard,
   onCreateItemModal,
   onLikeButton,
+  isLoggedIn,
 }) => {
   const { currentUser } = useContext(CurrentUserContext);
   return (
@@ -28,6 +29,7 @@ const ClothesSection = ({
           ?.filter((item) => item.owner === currentUser._id)
           .map((item, index) => (
             <ItemCard
+              isLoggedIn={isLoggedIn}
               item={item}
               key={index}
               onSelectCard={onSelectCard}

@@ -30,3 +30,12 @@
   /* margin: 0; */
   font-size: 20px;
 }
+
+.delete-modal__cancel-button {
+  border: none;
+  background: transparent;
+}
+
+.delete-modal__cancel-button:hover {
+  cursor: pointer;
+}

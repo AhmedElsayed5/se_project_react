@@ -12,12 +12,14 @@ const Profile = ({
   onEditModal,
   onLogOut,
   onLikeButton,
+  isLoggedIn,
 }) => {
   console.log("Profile");
   return (
     <div className="profile profile-section">
       <SideBar onEditModal={onEditModal} onLogOut={onLogOut} />
       <ClothesSection
+        isLoggedIn={isLoggedIn}
         items={items}
         onSelectCard={onSelectCard}
         onCreateItemModal={onCreateItemModal}
