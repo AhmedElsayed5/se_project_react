@@ -39,8 +39,8 @@ const EditProfile = ({ handleCloseModal, onEditProfile, isOpen }) => {
             name="name"
             minLength="1"
             maxLength="30"
-            placeholder={currentUser.name}
-            value={name}
+            placeholder="Name"
+            value={currentUser.name}
             onChange={handleNameChange}
           >
             {/* {currentUser.name} */}
@@ -56,8 +56,8 @@ const EditProfile = ({ handleCloseModal, onEditProfile, isOpen }) => {
             name="avatar"
             minLength="1"
             maxLength="3000"
-            placeholder={currentUser.avatar}
-            value={avatar}
+            placeholder="Avatar Url"
+            value={currentUser.avatar}
             onChange={handleUrlChange}
           ></input>
         </label>

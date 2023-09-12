@@ -1,7 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import ItemCard from "../ItemCard/ItemCard";
 import "./ClothesSection.css";
-import addclothes from "../../images/Addclothes2.svg";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const ClothesSection = ({

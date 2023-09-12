@@ -1,11 +1,8 @@
 // import logo from "..../src/logo.svg";
 import Header from "../Header/Header.js";
-import WeatherCard from "../WeatherCard/WeatherCard.js";
-import ItemCard from "../ItemCard/ItemCard";
 import Main from "../Main/Main.js";
 import Footer from "../Footer/Footer";
 import Profile from "../Profile/Profile.js";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./App.css";
 import { useEffect, useState } from "react";
 import ItemModal from "../ItemModal/ItemModal";
@@ -24,6 +21,7 @@ import AddItemModal from "../AddItemModal/AddItemModal.js";
 import DeleteItemModal from "../DeleteItemModal/DeleteItemModal.js";
 import SignUpModal from "../SignUpModal/SignUpModal.js";
 import LogInModal from "../LogInModal/LogInModal.js";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 import { getItems, deleteItem, addItem } from "../../utils/api.js";
 import {
   signUp,
@@ -36,7 +34,6 @@ import {
 import EditProfile from "../EditProfileModal/EditProfileModal.js";
 
 function App() {
-  const weatherTemp = 100;
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
@@ -45,7 +42,7 @@ function App() {
   const [items, setItems] = useState([]);
   const [users, setUsers] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const localToken = localStorage.getItem("jwt");
+  const [checkLoggedIn, setCheckLoggedIn] = useState(false);
   // working on getting the current user after updating
   const [currentUser, setCurrentUser] = useState();
   useEffect(() => {
@@ -141,7 +138,8 @@ function App() {
       .catch((err) => {
         console.log(err);
         setIsLoggedIn(false);
-      });
+      })
+      .finally(setCheckLoggedIn(true));
   };
 
   const onSignUp = (values) => {
@@ -221,6 +219,8 @@ function App() {
       }
     };
 
+    // useEffect;
+
     document.addEventListener("keydown", closeByEscape);
 
     return () => document.removeEventListener("keydown", closeByEscape);
@@ -241,7 +241,16 @@ function App() {
           />
 
           <Switch>
-            <Route path="/profile">
+            <Route exact path="/">
+              <Main
+                onLikeButton={onLikeButton}
+                isLoggedIn={isLoggedIn}
+                weatherTemp={temp}
+                onSelectCard={handleSelectedCard}
+                items={items}
+              />
+            </Route>
+            <Route exact path="/profile">
               {isLoggedIn ? <Redirect to="/profile" /> : <Redirect to="/" />}
               <Profile
                 isLoggedIn={isLoggedIn}
@@ -254,15 +263,11 @@ function App() {
                 onLikeButton={onLikeButton}
               />
             </Route>
-            <Route path="/">
-              {isLoggedIn ? <Redirect to="/profile" /> : <Redirect to="/" />}
-              <Main
-                isLoggedIn={isLoggedIn}
-                weatherTemp={temp}
-                onSelectCard={handleSelectedCard}
-                items={items}
-              />
-            </Route>
+            {/* </ProtectedRoute> */}
+            {/* </Route> */}
+            {/* <Route path="/"> */}
+            {/* {isLoggedIn ? <Redirect to="/profile" /> : <Redirect to="/" />} */}
+            {/* </Route> */}
           </Switch>
 
           <Footer />

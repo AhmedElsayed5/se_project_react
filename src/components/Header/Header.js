@@ -3,7 +3,7 @@ import logo from "../../images/logo.svg";
 import avatar from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const Header = ({
@@ -16,8 +16,6 @@ const Header = ({
   let date = new Date().toUTCString();
   let day = date.slice(5, 7);
   let month = date.slice(8, 11);
-  let year = date.slice(12, 16);
-  console.log(date);
   return (
     <header className="header">
       <div className="header__logo">

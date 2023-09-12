@@ -18,6 +18,7 @@ const ItemCard = ({ item, onSelectCard, onLikeButton, isLoggedIn }) => {
             {isLiked ? (
               <button className="card__like-button">
                 <img
+                  alt="like button"
                   src={likebutton}
                   className="card__like-button__liked"
                   onClick={() => {
@@ -29,6 +30,7 @@ const ItemCard = ({ item, onSelectCard, onLikeButton, isLoggedIn }) => {
             ) : (
               <button className="card__like-button">
                 <img
+                  alt="like button"
                   src={unlikebutton}
                   className="card__like-button__unliked"
                   onClick={() => {

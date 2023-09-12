@@ -4,7 +4,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import { useMemo, useContext } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
-function Main({ weatherTemp, onSelectCard, items, isLoggedIn }) {
+function Main({ weatherTemp, onSelectCard, items, isLoggedIn, onLikeButton }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
@@ -31,10 +31,11 @@ function Main({ weatherTemp, onSelectCard, items, isLoggedIn }) {
         <div className="card_items">
           {filteredCards.map((item, index) => (
             <ItemCard
+              onLikeButton={onLikeButton}
               item={item}
               isLoggedIn={isLoggedIn}
               onSelectCard={onSelectCard}
-              key={index}
+              key={item._id}
             />
           ))}
         </div>
