@@ -3,9 +3,7 @@ import { Route, Redirect } from "react-router-dom/cjs/react-router-dom";
 
 const ProtectedRoute = ({ children, isLoggedIn, ...props }) => {
   return (
-    <Route props>
-      {isLoggedIn ? <Redirect to="/profile" /> : <Redirect to="/" />}
-    </Route>
+    <Route {...props}>{isLoggedIn ? children : <Redirect to="/" />}</Route>
   );
 };
 

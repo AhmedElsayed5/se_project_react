@@ -3,14 +3,14 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const EditProfile = ({ handleCloseModal, onEditProfile, isOpen }) => {
-  const [name, setName] = useState("");
   const { currentUser } = useContext(CurrentUserContext);
+  const [name, setName] = useState(currentUser.name);
   const handleNameChange = (e) => {
     console.log(e.target.value);
     setName(e.target.value);
   };
 
-  const [avatar, setUrl] = useState("");
+  const [avatar, setUrl] = useState(currentUser.avatar);
   const handleUrlChange = (e) => {
     console.log(e.target.value);
     setUrl(e.target.value);
@@ -39,8 +39,8 @@ const EditProfile = ({ handleCloseModal, onEditProfile, isOpen }) => {
             name="name"
             minLength="1"
             maxLength="30"
-            placeholder="Name"
-            value={currentUser.name}
+            placeholder={currentUser.name}
+            value={name}
             onChange={handleNameChange}
           >
             {/* {currentUser.name} */}
@@ -56,8 +56,8 @@ const EditProfile = ({ handleCloseModal, onEditProfile, isOpen }) => {
             name="avatar"
             minLength="1"
             maxLength="3000"
-            placeholder="Avatar Url"
-            value={currentUser.avatar}
+            placeholder={currentUser.avatar}
+            value={avatar}
             onChange={handleUrlChange}
           ></input>
         </label>

@@ -25,14 +25,13 @@ export const logIn = ({ email, password }) => {
 };
 
 export const checkToken = (token) => {
-  console.log(token);
   return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  });
+  }).then((res) => checkResponse(res));
 };
 
 export const editProfile = (token, { name, avatar }) => {

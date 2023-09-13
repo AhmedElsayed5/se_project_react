@@ -6,7 +6,6 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 
 function Main({ weatherTemp, onSelectCard, items, isLoggedIn, onLikeButton }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-
   const temp = weatherTemp?.temperature?.[currentTemperatureUnit] || 999;
 
   const weatherType = useMemo(() => {
@@ -17,7 +16,8 @@ function Main({ weatherTemp, onSelectCard, items, isLoggedIn, onLikeButton }) {
     } else if (temp <= 65) {
       return "cold";
     }
-  }, [weatherTemp]);
+  }, [temp]);
+
   const filteredCards = items.filter((item) => {
     return item.weather.toLowerCase() === weatherType;
   });

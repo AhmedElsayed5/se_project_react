@@ -30,7 +30,7 @@ const ClothesSection = ({
             <ItemCard
               isLoggedIn={isLoggedIn}
               item={item}
-              key={index}
+              key={item._id}
               onSelectCard={onSelectCard}
               onLikeButton={onLikeButton}
             />
