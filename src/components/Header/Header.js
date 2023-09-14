@@ -1,6 +1,5 @@
 import "./Header.css";
 import logo from "../../images/logo.svg";
-import avatar from "../../images/avatar.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import React, { useContext } from "react";
@@ -48,6 +47,11 @@ const Header = ({
               <Link to="/profile" className="header__current-user-link">
                 <p className="header__current-user">{currentUser?.name}</p>
               </Link>
+              <img
+                src={currentUser?.avatar}
+                className="header__avatar"
+                alt="logo"
+              />
             </div>
           ) : (
             <div className="header__user-buttons">
@@ -67,9 +71,6 @@ const Header = ({
               </button>
             </div>
           )}
-        </div>
-        <div>
-          <img src={avatar} alt="logo" />
         </div>
       </div>
     </header>

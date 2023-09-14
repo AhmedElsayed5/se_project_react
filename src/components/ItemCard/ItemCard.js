@@ -1,49 +1,32 @@
 import "./ItemCard.css";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import likebutton from "../../images/liked-heart.svg";
 import unlikebutton from "../../images/Like-button.svg";
 
 const ItemCard = ({ item, onSelectCard, onLikeButton, isLoggedIn }) => {
   const { currentUser } = useContext(CurrentUserContext);
-  const [isLiked, setIsLiked] = useState(false);
+  const [isLiked, setIsLiked] = useState(
+    item.likes.some((like) => like === currentUser?._id)
+  );
 
-  useEffect(() => {
-    if (item.likes.length > 0 && !isLiked) {
-      setIsLiked(item.likes.some((like) => like === currentUser?._id));
-    }
-  }, [currentUser?._id, isLiked, item, setIsLiked]);
   return (
     <div className="card__container">
       <div className="card__header">
         <div className="card__header-name">{item.name}</div>
         {isLoggedIn ? (
           <div className="card__header-like-button">
-            {isLiked ? (
-              <button className="card__like-button">
-                <img
-                  alt="like button"
-                  src={likebutton}
-                  className="card__like-button__liked"
-                  onClick={() => {
-                    onLikeButton(isLiked, item._id);
-                    setIsLiked(!isLiked);
-                  }}
-                />
-              </button>
-            ) : (
-              <button className="card__like-button">
-                <img
-                  alt="like button"
-                  src={unlikebutton}
-                  className="card__like-button__unliked"
-                  onClick={() => {
-                    onLikeButton(isLiked, item._id);
-                    setIsLiked(!isLiked);
-                  }}
-                />
-              </button>
-            )}
+            <button className="card__like-button">
+              <img
+                alt="like button"
+                src={isLiked ? likebutton : unlikebutton}
+                className={"card__like-button"}
+                onClick={() => {
+                  onLikeButton(isLiked, item._id);
+                  setIsLiked(!isLiked);
+                }}
+              />
+            </button>
           </div>
         ) : (
           <div></div>

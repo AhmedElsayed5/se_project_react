@@ -3,8 +3,6 @@ import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import "./Profile.css";
 
-// const [activeModal, setActiveModal] = useState("");
-
 const Profile = ({
   items,
   onSelectCard,
@@ -14,7 +12,6 @@ const Profile = ({
   onLikeButton,
   isLoggedIn,
 }) => {
-  console.log("Profile");
   return (
     <div className="profile profile-section">
       <SideBar onEditModal={onEditModal} onLogOut={onLogOut} />

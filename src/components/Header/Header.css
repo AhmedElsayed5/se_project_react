@@ -48,12 +48,14 @@
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  padding-left: 20px;
   text-decoration: none;
 }
 
 .header__user-buttons {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
 }
 
 .header__date {
@@ -64,6 +66,12 @@
   font-weight: 700;
   line-height: normal;
   padding-left: 20px;
+}
+
+.header__avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
 }
 
 .header__current-user-link {

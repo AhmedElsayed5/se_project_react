@@ -45,11 +45,7 @@ function App() {
   };
   const [currentUser, setCurrentUser] = useState({});
   useEffect(() => {
-    checkToken(localStorage.getItem("jwt"))
-      .then((res) => updateCurrentUser())
-      .catch((err) => {
-        console.log(err);
-      });
+    updateCurrentUser();
   }, []);
   useEffect(() => {
     setIsLoggedIn(localStorage.getItem("loggedIn"));
@@ -126,7 +122,7 @@ function App() {
         localStorage.setItem("jwt", res.token);
         localStorage.setItem("loggedIn", true);
         updateLoggedIn();
-        updateCurrentUser();
+        setCurrentUser(res.user);
         handleCloseModal();
       })
       .then()
@@ -157,9 +153,10 @@ function App() {
     const token = localStorage.getItem("jwt");
     editProfile(token, values)
       .then((res) => {
-        currentUser.name = res.name;
-        currentUser.avatar = res.avatar;
-        setIsLoggedIn(true);
+        setCurrentUser({
+          ...currentUser,
+          ...res,
+        });
         handleCloseModal();
       })
       .catch((err) => console.log(err));
