@@ -66,7 +66,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
       <fieldset className="form__field">
         <p className="modal__paragraph">Select the weather type:</p>
         <div className="modal__radios">
-          <div className="modal__radio">
+          <label className="modal__radio">
             <input
               type="radio"
               id="hot"
@@ -76,8 +76,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
               name="weatherType"
             />
             Hot
-          </div>
-          <div className="modal__radio">
+          </label>
+          <label className="modal__radio">
             <input
               type="radio"
               id="warm"
@@ -87,8 +87,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
               name="weatherType"
             />
             Warm
-          </div>
-          <div className="modal__radio">
+          </label>
+          <label className="modal__radio">
             <input
               type="radio"
               id="cold"
@@ -98,7 +98,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
               name="weatherType"
             />
             Cold
-          </div>
+          </label>
         </div>
       </fieldset>
     </ModalWithForm>

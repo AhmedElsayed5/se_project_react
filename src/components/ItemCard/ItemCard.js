@@ -1,14 +1,12 @@
 import "./ItemCard.css";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import likebutton from "../../images/liked-heart.svg";
 import unlikebutton from "../../images/Like-button.svg";
 
 const ItemCard = ({ item, onSelectCard, onLikeButton, isLoggedIn }) => {
   const { currentUser } = useContext(CurrentUserContext);
-  const [isLiked, setIsLiked] = useState(
-    item.likes.some((like) => like === currentUser?._id)
-  );
+  const isLiked = item.likes.some((like) => like === currentUser?._id);
 
   return (
     <div className="card__container">
@@ -23,7 +21,7 @@ const ItemCard = ({ item, onSelectCard, onLikeButton, isLoggedIn }) => {
                 className={"card__like-button"}
                 onClick={() => {
                   onLikeButton(isLiked, item._id);
-                  setIsLiked(!isLiked);
+                  // setIsLiked(!isLiked);
                 }}
               />
             </button>
