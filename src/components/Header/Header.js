@@ -10,6 +10,7 @@ const Header = ({
   onLogInModal,
   isLoggedIn,
   onCreateItemModal,
+  onLogOut,
 }) => {
   const { currentUser } = useContext(CurrentUserContext);
   let date = new Date().toUTCString();
@@ -37,6 +38,9 @@ const Header = ({
         <div>
           {isLoggedIn ? (
             <div className="header__user-buttons">
+              {/* <button type="text" onClick={onLogOut} className="header__button">
+                LogOut
+              </button> */}
               <button
                 type="text"
                 onClick={onCreateItemModal}

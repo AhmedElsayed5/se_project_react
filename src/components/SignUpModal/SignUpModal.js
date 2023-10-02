@@ -81,8 +81,6 @@ const SignUp = ({ handleCloseModal, onSignUp, isOpen }) => {
             onChange={handleNameChange}
           ></input>
         </label>
-      </fieldset>
-      <fieldset className="form__field">
         <label className="modal__label">
           Avatar URL
           <input

@@ -7,6 +7,7 @@ const ModalWithForm = ({
   onClose,
   name,
   onSubmit,
+  onChangeModal,
   isOpen,
 }) => {
   console.log("ModalWithForm");
@@ -17,11 +18,25 @@ const ModalWithForm = ({
           <img src={closeButton} alt={"Close Icon"}></img>
         </button>
         <h3 className="modal__title">{title}</h3>
-        <form onSubmit={onSubmit} className="modal__labels">
+        <form onSubmit={onSubmit} className="modal__labels ">
           {children}
-          <button className="modal__button-submit" type="submit">
-            {buttonText}
-          </button>
+          {title === "Log In" ? (
+            <div className="modal__buttons">
+              <button className="modal__button-submit" type="submit">
+                {buttonText}
+              </button>
+              <button
+                className="modal__button-register"
+                onClick={onChangeModal}
+              >
+                or Register
+              </button>
+            </div>
+          ) : (
+            <button className="modal__button-submit" type="submit">
+              {buttonText}
+            </button>
+          )}
         </form>
       </div>
     </div>

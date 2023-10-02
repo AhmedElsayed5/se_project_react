@@ -169,6 +169,11 @@ function App() {
     setCurrentUser({});
   };
 
+  const onChangeModal = () => {
+    handleCloseModal();
+    handleSignUpModal();
+  };
+
   const onLikeButton = (isLiked, id) => {
     const token = localStorage.getItem("jwt");
     isLiked
@@ -273,6 +278,7 @@ function App() {
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "login"}
             onLogIn={onLogIn}
+            onChangeModal={onChangeModal}
           />
         )}
         {activeModal === "preview" && (

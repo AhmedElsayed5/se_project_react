@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const LogIn = ({ handleCloseModal, onLogIn, isOpen }) => {
+const LogIn = ({ handleCloseModal, onLogIn, isOpen, onChangeModal }) => {
   const [email, setEmail] = useState("");
   const handleEmailChange = (e) => {
     console.log(e.target.value);
@@ -18,6 +18,7 @@ const LogIn = ({ handleCloseModal, onLogIn, isOpen }) => {
     e.preventDefault();
     onLogIn({ email, password });
   };
+
   return (
     <ModalWithForm
       title="Log In"
@@ -26,6 +27,7 @@ const LogIn = ({ handleCloseModal, onLogIn, isOpen }) => {
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      onChangeModal={onChangeModal}
     >
       <fieldset className="form__field">
         <label className="modal__label">
