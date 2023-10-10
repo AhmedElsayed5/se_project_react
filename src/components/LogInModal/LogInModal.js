@@ -7,7 +7,6 @@ const LogIn = ({ handleCloseModal, onLogIn, isOpen, onChangeModal }) => {
     console.log(e.target.value);
     setEmail(e.target.value);
   };
-  //comment
 
   const [password, setPassWord] = useState("");
   const handlePassWordChange = (e) => {

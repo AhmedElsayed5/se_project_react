@@ -1,5 +1,8 @@
 import { checkResponse } from "./api";
-const baseUrl = "http://localhost:3001";
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.weatherapp.chickenkiller.com"
+    : "http://localhost:3001";
 
 const headers = { "Content-Type": "application/json" };
 
@@ -11,8 +14,8 @@ export const signUp = ({ name, avatar, email, password }) => {
   }).then(checkResponse);
 };
 
-export const logIn = ({ email, password }) => {
-  return fetch(`${baseUrl}/login`, {
+export const signin = ({ email, password }) => {
+  return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: headers,
     body: JSON.stringify({ email, password }),
