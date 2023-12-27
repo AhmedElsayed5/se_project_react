@@ -20,7 +20,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.js";
 import { getItems, deleteItem, addItem } from "../../utils/api.js";
 import {
   signUp,
-  logIn,
+  signin,
   checkToken,
   editProfile,
   likeItem,
@@ -110,14 +110,11 @@ function App() {
       .catch((err) => console(err));
   };
 
-  // const updateCurrentUser = () => {
-  //   checkToken(localStorage.getItem("jwt")).then((res) => setCurrentUser(res));
-  // };
   const updateLoggedIn = () => {
     setIsLoggedIn(localStorage.getItem("loggedIn"));
   };
   const onLogIn = (values) => {
-    logIn(values)
+    signin(values)
       .then((res) => {
         localStorage.setItem("jwt", res.token);
         localStorage.setItem("loggedIn", true);
