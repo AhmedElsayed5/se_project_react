@@ -16,7 +16,7 @@
 ## Install
 - For required packages check package.json
 - run "npm install"
-- commit backend at [https://github.com/AhmedElsayed5/se_project_express]
+- clone backend at [https://github.com/AhmedElsayed5/se_project_express]
 - run "npm install" on backend branch
 - read scripts in package.json "npm run dev" to run in local machine
 
