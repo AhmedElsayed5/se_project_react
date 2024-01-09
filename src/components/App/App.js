@@ -43,6 +43,7 @@ function App() {
       .then((res) => setCurrentUser(res))
       .catch((err) => console.log(err));
   };
+  // add element
   const [currentUser, setCurrentUser] = useState({});
   useEffect(() => {
     updateCurrentUser();
